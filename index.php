@@ -23,11 +23,8 @@ foreach ($courses as $course) {
     $one_dom =  str_get_html($one);
 
     $price = $one_dom->find('.course1-ticket1--box-newPrice', 0);
-    $todb['cost'] = $price->plaintext;
+    $todb['cost'] = implode(explode(' ',$price->plaintext));
 
-//    $sql->insert('courses', $todb);
-
-    echo $price->plaintext;
-    echo '<pre>';
+    $sql->insert('courses', $todb);
 
 }
