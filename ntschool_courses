@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Разработка интерактивных веб-приложений | NTSCHOOL</title>
+    <base href="https://ntschool.ru/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <link rel="canonical" href="https://ntschool.ru/kursyi/veb-programmirovanie/javascript">
+        <meta name="robots" content="index,follow">
+    <meta name="keywords" content="курсы javascript, курсы по javascript, курсы программирования javascript">
+    <meta name="description" content="Вы сможете свободно программировать на языке Javascript в его природном варианте и с использованием популярных современных библиотек">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <script async src="assets/js/metamobile.js"></script>
+    <script>
+      (function (w) {
+        'use strict'
+        var loadCSS = function (href, before, media) {
+          var doc = w.document
+          var ss = doc.createElement('link')
+          var ref
+          if (before) {
+            ref = before
+          }
+          else {
+            var refs = ( doc.body || doc.getElementsByTagName('head')[0] ).childNodes
+            ref = refs[refs.length - 1]
+          }
+          var sheets = doc.styleSheets
+          ss.rel = 'stylesheet'
+          ss.href = href
+          ss.media = 'only x'
+
+          function ready (cb) {
+            if (doc.body) {
+              return cb()
+            }
+            setTimeout(function () {
+              ready(cb)
+            })
+          }
+
+          ready(function () {
+            ref.parentNode.insertBefore(ss, ( before ? ref : ref.nextSibling ))
+          })
+          var onloadcssdefined = function (cb) {
+            var resolvedHref = ss.href
+            var i = sheets.length
+            while (i--) {
+              if (sheets[i].href === resolvedHref) {
+                return cb()
+              }
+            }
+            setTimeout(function () {
+              onloadcssdefined(cb)
+            })
+          }
+
+          function loadCB () {
+            if (ss.addEventListener) {
+              ss.removeEventListener('load', loadCB)
+            }
+            ss.media = media || 'all'
+          }
+
+          if (ss.addEventListener) {
+            ss.addEventListener('load', loadCB)
+          }
+          ss.onloadcssdefined = onloadcssdefined
+          onloadcssdefined(loadCB)
+          return ss
+        }
+        if (typeof exports !== 'undefined') {
+          exports.loadCSS = loadCSS
+        }
+        else {
+          w.loadCSS = loadCSS
+        }
+      }(typeof global !== 'undefined' ? global : this));
+      (function (w) {
+        if (!w.loadCSS) {
+          return
+        }
+        var rp = loadCSS.relpreload = {}
+          rp.support = function () {
+            try {
+              return w.document.createElement('link').relList.supports('preload')
+            } catch (e) {}
+          }
+        rp.poly = function () {
+          var links = w.document.getElementsByTagName('link')
+          for (var i = 0; i < links.length; i++) {
+            var link = links[i]
+            if (link.rel === 'preload' && link.getAttribute('as') === 'style') {
+              w.loadCSS(link.href, link)
+              link.rel = null
+            }
+          }
+        }
+        if (!rp.support()) {
+          rp.poly()
+          var run = w.setInterval(rp.poly, 300)
+          if (w.addEventListener) {
+            w.addEventListener('load', function () {
+              w.clearInterval(run)
+            })
+          }
+        }
+      }(this))
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,cyrillic" rel="preload" as="style"
+          onload="this.rel='stylesheet'">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic" rel="preload" as="style"
+          onload="this.rel='stylesheet'">
+    <link rel="stylesheet" href="assets/lib/owl-carousel/owl.comp.min.css">
+    <link rel="stylesheet" href="assets/lib/modalEffects/component_mod.min.css">
+    <link rel="stylesheet" href="assets/css/stylesa.css">
+    
+    <style>
+    .course1 .no-name--50p:first-child {
+        background: url("/assets/images/products/27/js-1.jpg") no-repeat 100% 0;
+        background-size: auto 100%;
+    }
+</style>
+
+<script type="text/javascript">miniShop2Config = {"cssUrl":"\/assets\/components\/minishop2\/css\/web\/","jsUrl":"\/assets\/components\/minishop2\/js\/web\/","actionUrl":"\/assets\/components\/minishop2\/action.php","ctx":"web","close_all_message":"\u0437\u0430\u043a\u0440\u044b\u0442\u044c \u0432\u0441\u0435","price_format":[2,"."," "],"price_format_no_zeros":true,"weight_format":[20,".",""],"weight_format_no_zeros":true};</script>
+<link rel="stylesheet" href="/assets/components/ajaxform/css/default.css" type="text/css" />
+</head>
+<body>
+<div class="wrapper">
+    
+        <header class="header">
+            <div class="container">
+                <div class="header-top">
+                    <div class="logo-login-search">
+                        <a href="/" class="logoMain" title="Школа современных технологий">
+                            <img src="assets/i/logoMain.svg" alt="logo 'ntschool.loc'" class="logoMain--img">
+                        </a>
+                        <div class="login">
+
+                                                            <a class="login-btn" href="avtorizacziya" title="login">Вход</a>
+                            
+                        </div>
+                        <form class="search" action="poisk" method="get">
+                            <label class="search-item" for="search">
+                                <input type="search" name="gquery" value="" id="search">
+                            </label>
+                        </form>
+                    </div>
+
+                    <div class="callback-social">
+                        <div class="callback md-trigger" title="Заказать обратный звонок" data-modal="modal-1">
+                            <div class="callback-phone">8 800 500 20 63</div>
+                            <span class="callback-btn">Обратный звонок</span>
+                        </div>
+                        <div class="social">
+                            <a href="https://www.facebook.com/ntschool" target="_blank" rel="nofollow noreferrer" class="social-item"
+                               title="facebook">
+                                <svg class="social-item--ico" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 22 22" fill="#fff">
+
+                                    <use xlink:href='assets/i/facebook.svg#ico'></use>
+                                </svg>
+                            </a>
+                            <a href="http://vk.com/ntschoolru" target="_blank" rel="nofollow noreferrer" class="social-item"
+                               title="vkontakte">
+                                <svg class="social-item--ico" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 22 22" fill="#fff">
+
+                                    <use xlink:href='assets/i/vk.svg#ico'></use>
+                                </svg>
+                            </a>
+                            <a href="https://twitter.com/ntschool_ru" target="_blank" rel="nofollow noreferrer" class="social-item"
+                               title="twitter">
+                                <svg class="social-item--ico" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 22 22" fill="#fff">
+                                    <use xlink:href='assets/i/twitter.svg#ico'></use>
+                                </svg>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+    
+        <nav class="mainMenu">
+            <div class="container">
+                <ul class="mainMenu-list"><li class="mainMenu-list--item">
+                    <a href="index" class="mainMenu-list--item-link"
+                       title="Главная">Главная</a>
+                </li><li class="mainMenu-list--item">
+                    <a href="kursyi" class="mainMenu-list--item-link"
+                       title="Курсы">Курсы</a>
+                </li><li class="mainMenu-list--item">
+                    <a href="blog" class="mainMenu-list--item-link"
+                       title="Блог">Блог</a>
+                </li><li class="mainMenu-list--item">
+                    <a href="kontaktyi" class="mainMenu-list--item-link"
+                       title="Контакты">Контакты</a>
+                </li><li class="mainMenu-list--item">
+                    <a href="testy" class="mainMenu-list--item-link"
+                       title="Тесты">Тесты</a>
+                </li><li class="mainMenu-list--item">
+                    <a href="besplatno" class="mainMenu-list--item-link"
+                       title="Бесплатные материалы">Бесплатные материалы</a>
+                </li></ul>
+                <div class="basket" id="msMiniCart">
+        <a href="korzina" class="basket-item" title="Корзина">
+            <svg class="basket-item--ico" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 28.52 23.8">
+                <use xlink:href='assets/i/basket-01.svg#ico'></use>
+            </svg>
+            <div class="ms2_total_count basket-item--counter" title="кол-во товаров в корзине">0</div>
+        </a>
+    </div>
+                <svg class="mobMenu-btn_svg j-mobMenu-btn" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 48 48">
+                    <rect id="rect" width="38" height="8" x="5" y="34"/>
+                    <rect width="38" height="8" x="5" y="20"/>
+                    <rect width="38" height="8" x="5" y="6"/>
+                </svg>
+            </div>
+        </nav>
+    
+    <main>
+        
+    <div class="blog course1">
+        <div class="mainLine">
+            <div class="container">
+                <div class="breadcrumbs"><a href="kursyi" title="Курсы">Курсы</a>&nbsp;/&nbsp;<a href="kursyi/veb-programmirovanie" title="Веб- программирование">Веб- программирование</a>&nbsp;/&nbsp;<span class="active">JavaScript</span></div>
+            </div>
+        </div>
+        <div class="no-name" id="top_block">
+            <div class="no-name--50p">
+                <div class="course1-promo">
+                    <div class="course1-promo--top">
+                        <img src="/assets/images/products/27/js.svg"
+                             alt="JavaScript"
+                             class="course1-promo--top-img">
+                        <div class="course1-promo--top-description">
+                            <span class="owl-news--item-counter course1-promo--top-description--counter">25</span>
+                            <h1 class="course1-promo--top-description--title">JavaScript</h1>
+                            <span class="course1-promo--top-description--text">Изучение JavaScript - один из базовых необходимых языков в веб-программировании</span>
+                        </div>
+                    </div>
+                    <div class="course1-promo--bottom">
+                                                                            <div class="course1-promo--bottom--num">
+                                <strong>1</strong>
+                                Месяц
+                            </div>
+                            <div class="course1-promo--bottom--num">
+                                <strong>16</strong>
+                                Аудиторных часов
+                            </div>
+                            <div class="course1-promo--bottom--num">
+                                <strong>72</strong>
+                                Часов всего
+                            </div>
+                            <div class="course1-promo--bottom--num">
+                                <strong>8</strong>
+                                Онлайн уроков
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="no-name--50p">
+                <input type="radio" name="n1" id="n1" checked>
+                <label for="n1">Онлайн</label>
+                <div class="course1-ticket course1-ticket1">
+                    <form class="course1-ticket1--box ms2_form" method="post">
+                        <input type="hidden" name="id" value="27">
+                        <input type="hidden" name="count" id="product_price" value="1">
+                        <div class="course1-ticket1--box-wrapper1">
+                            <span class="course1-ticket1--box-title">Цена курса:</span>
+                                                        <div class="course1-ticket1--box-newPrice">15 000</div>
+                            <div class="promoform">
+                                <span class="subPromocode">Напоминаем, что дополнительную скидку можно получить в корзине введя промо-код</span>
+                                <button type="submit" class="btn" name="ms2_action" value="cart/add">В корзину</button>
+                            </div>
+                        </div>
+                        <div class="course1-ticket1--box-wrapper2">
+                            <span class="course1-ticket1--box-title">Дата курса:</span>
+                            <div class="course1-ticket1--box-answer course1-ticket1--box-answer_date">
+                                <label>
+                                    <select name="options[course-date]" id="course-date">
+                                        
+                                        <option value="0">По набору группы</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <span class="course1-ticket1--box-title">Мест:</span>
+                            <div class="course1-ticket1--box-answer course1-ticket1--box-answer_numb">
+                                25                            </div>
+                            <span class="course1-ticket1--box-title">Курс уже прошли:</span>
+                            <div class="course1-ticket1--box-answer course1-ticket1--box-answer_people">
+                                10                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                            </div>
+        </div>
+
+        <div class="container">
+            <div class="course1-wrapper">
+                <h2 class="course1-title">О курсе</h2>
+
+                <div class="course1-about">
+                    <div class="course1-about--box">
+                                                
+                                            </div>
+
+                    <div class="course1-about--description">
+                        <h3 class="course1-about--title">Для кого этот курс</h3>
+                        <div class="course1-about--content">
+                            <p>Курс Javascript предназначен для тех, кто свободно владеет серверным программированием на языке PHP и теперь хочет изучить разработку веб-приложений на стороне клиента. В данном курсе мы будем рассматривать как чистый Javascript, так и популярные библиотеки, позволяющие существенно сократить написание кода. Отдельное внимание будет уделено технологии AJAX - фоновому общению клиента и сервера. Данная технология повсеместно применяется на современных сайтах.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="course1-programm">
+            <div class="container">
+                <div class="course1-wrapper">
+                    <h2 class="course1-title">Программа курса</h2>
+                    <ol class="course1-programm--list">
+                                                                            <li class="course1-programm--list-item">
+                                <div class="course1-programm--list-item--title">Работа с DOM</div>
+                                <div class="text">Структура DOM документа
+<p>Объекты: свойства, методы, события</p>
+
+<p>Отложенная загрузка страницы</p>
+
+<p>Основные свойства объектов DOM</p>
+
+<p>Способы выборки элементов</p>
+
+<p>Обработка событий</p>
+
+<p>Создаём простой слайдер фотографий на javascript</p>
+</div>
+                            </li>
+                                                    <li class="course1-programm--list-item">
+                                <div class="course1-programm--list-item--title">ООП в javascript</div>
+                                <div class="text">ООП, которого нет
+<p>Поля и переменные</p>
+
+<p>Конструктор класса. Пример таймера обратного отсчёта</p>
+
+<p>Выгода от ООП</p>
+</div>
+                            </li>
+                                                    <li class="course1-programm--list-item">
+                                <div class="course1-programm--list-item--title">Основы AJAX</div>
+                                <div class="text">Что такое AJAX
+<p>Обзор применения AJAX на современных сайтах.</p>
+
+<p>XMLHttpRequest. Отправка GET и POST запросов</p>
+
+<p>Примеры добавления комментариев с помощью ajax</p>
+</div>
+                            </li>
+                                                    <li class="course1-programm--list-item">
+                                <div class="course1-programm--list-item--title">jQuery 1</div>
+                                <div class="text">Смысл использования библиотек. Селекторы
+<p>Использование собственных атрибутов</p>
+
+<p>для выборки элементов</p>
+
+<p>Мифы из SEO</p>
+
+<p>Основные функции для работы с элементами</p>
+
+<p>Обработка событий. Простейшие анимации</p>
+
+<p>Пример FAQ</p>
+</div>
+                            </li>
+                                                    <li class="course1-programm--list-item">
+                                <div class="course1-programm--list-item--title">jQuery 2</div>
+                                <div class="text">Функция анимации. Параллельное выполнение анимации
+<p>Цепочки из анимаций. Коллбеки</p>
+
+<p>Создание и обработка собственных событий</p>
+
+<p>Подключение расширений JQuery</p>
+
+<p>Написание собственных плагинов</p>
+</div>
+                            </li>
+                                                    <li class="course1-programm--list-item">
+                                <div class="course1-programm--list-item--title">AJAX в jQuery</div>
+                                <div class="text">Основные функции: get, post, load, ajax
+<p>Пример постраничной навигации с помощью AJAX</p>
+
+<p>Пример постраничной навигации по скроллу</p>
+
+<p>Опасность прямых обращений</p>
+
+<p>к контроллерам, обрабатывающим AJAX</p>
+</div>
+                            </li>
+                                                    <li class="course1-programm--list-item">
+                                <div class="course1-programm--list-item--title">XML и JSON</div>
+                                <div class="text">XML и JSON, передача данных
+<p>без графического представления</p>
+
+<p>Функции PHP для работы с json</p>
+
+<p>JSONP, взаимодействие с чужими api</p>
+
+<p>Создание собственного простейшего api</p>
+</div>
+                            </li>
+                                                    <li class="course1-programm--list-item">
+                                <div class="course1-programm--list-item--title">JQueryUI</div>
+                                <div class="text">Всё, что написано хорошо, написано до нас
+<p>Почему на js почти все библиотеки бесплатные</p>
+
+<p>JQueryUI. Поведения, виджеты,</p>
+
+<p>эффекты. ThemeRoller</p>
+
+<p>Bootstrap. Css, componets, js</p>
+
+<p>Примеры создания модальных окон</p>
+
+<p>на обеих библиотеках</p>
+</div>
+                            </li>
+                                            </ol>
+                </div>
+            </div>
+        </div>
+        <div class="course1-teacher">
+            <div class="container">
+                <div class="course1-wrapper">
+                    <h2 class="course1-title">Преподаватели курса</h2>
+                    <div class="course1-teacher-list">
+                        <div class="course1-teacher-list--item">
+    <img src="assets/images/teachers/Markin.jpg" alt="Игорь Маркин" class="course1-teacher-list--item-img">
+    <div class="course1-teacher-list--item-description">
+        <div class="course1-teacher-list--item-description--title">Игорь Маркин</div>
+        <br/>
+        <div class="course1-teacher-list--item-description--status">Профессиональный веб-разработчик</div>
+        <br/>
+        <div class="course1-teacher-list--item-description--hr"></div>
+        <div class="course1-teacher-list--item-description--text"><p>Профессиональный веб-разработчик. Успешный фрилансер в направлениях вёрстки и создания сайтов на PHP.</p>
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="course1-process">
+            <div class="container">
+                <div class="course1-wrapper">
+                    <h2 class="course1-title">В процессе обучения вы получите</h2>
+                    <div class="course1-process-list">
+                        <figure class="course1-process-list--item">
+                            <img src="assets/i/courses/8_urokov.jpeg" alt="8 онлайн-уроков"
+                                 class="course1-process-list--item-img">
+                            <figcaption class="course1-process-list--item-caption">
+                                8 онлайн-уроков
+
+                            </figcaption>
+                        </figure>
+                        <figure class="course1-process-list--item">
+                            <img src="assets/i/courses/pomosh.jpeg" alt="Помощь преподавателя"
+                                 class="course1-process-list--item-img">
+                            <figcaption class="course1-process-list--item-caption">Помощь преподавателя</figcaption>
+                        </figure>
+                        <figure class="course1-process-list--item">
+                            <img src="assets/i/courses/video.jpeg" alt="Видеозаписи всех занятий"
+                                 class="course1-process-list--item-img">
+                            <figcaption class="course1-process-list--item-caption">Видеозаписи всех занятий</figcaption>
+                        </figure>
+                        <figure class="course1-process-list--item">
+                            <img src="assets/i/courses/archiv.jpeg" alt="Архив со всеми материалами"
+                                 class="course1-process-list--item-img">
+                            <figcaption class="course1-process-list--item-caption">Архив со всеми материалами
+                            </figcaption>
+                        </figure>
+                        <figure class="course1-process-list--item">
+                            <img src="assets/i/courses/acces.jpeg" alt="Доступ в закрытое сообщество"
+                                 class="course1-process-list--item-img">
+                            <figcaption class="course1-process-list--item-caption">Доступ в закрытое сообщество
+                            </figcaption>
+                        </figure>
+                        <figure class="course1-process-list--item">
+                            <img src="assets/i/courses/party.jpeg" alt="Тусовку друзей программистов"
+                                 class="course1-process-list--item-img">
+                            <figcaption class="course1-process-list--item-caption">Тусовку друзей программистов
+                            </figcaption>
+                        </figure>
+                        <figure class="course1-process-list--item">
+                            <img src="assets/i/courses/konkurent.jpeg" alt="Конкурентное преимущество"
+                                 class="course1-process-list--item-img">
+                            <figcaption class="course1-process-list--item-caption">Конкурентное преимущество
+                            </figcaption>
+                        </figure>
+                        <figure class="course1-process-list--item">
+                            <img src="assets/i/courses/sertificate.jpeg" alt="Сертификат об успешном прохождении курса"
+                                 class="course1-process-list--item-img">
+                            <figcaption class="course1-process-list--item-caption">Сертификат о прохождении
+                                курса
+                            </figcaption>
+                        </figure>
+
+                    </div>
+                    <div class="course1-process-sertiferti">
+                        <img src="assets/i/courses/sert.jpg"
+                             alt="Сертификат Школы современных технологий"
+                             class="course1-process-sertiferti--img">
+                        <div class="course1-process-sertiferti--description">
+                            <div class="course1-process-sertiferti--description-title">Выдача сертификата</div>
+                            <hr class="course1-process-sertiferti--description-hr">
+                            <div class="course1-process-sertiferti--description-text">Увеличьте свои шансы на успешный
+                                старт и
+                                развитие карьеры, получив после
+                                прохождения курса уникальный
+                                сертификат.
+                                Учеба у нас, благодаря которой вы
+                                научитесь применять свои знания на
+                                практике, и
+                                получение сертификата
+                                Школы Современных Технологий
+                                позволяют легко войти в сферу
+                                веб-разработки,
+                                интернет-маркетинга,
+                                веб-дизайна, seo и разработки
+                                мобильных приложений.
+                                <br>
+                                <p>Каждый сертификат имеет уникальный номер, благодаря которому ваш потенциальный
+                                    работодатель может
+                                    убедиться в том, что сертификат принадлежит именно вам.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+
+    </main>
+    
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-top">
+                    <ul class="mainMenu-list mainMenu-list_mod"><li class="mainMenu-list--item">
+                        <a href="index" class="mainMenu-list--item-link"
+                           title="Главная">Главная</a>
+                    </li><li class="mainMenu-list--item">
+                        <a href="kursyi" class="mainMenu-list--item-link"
+                           title="Курсы">Курсы</a>
+                    </li><li class="mainMenu-list--item">
+                        <a href="blog" class="mainMenu-list--item-link"
+                           title="Блог">Блог</a>
+                    </li><li class="mainMenu-list--item">
+                        <a href="kontaktyi" class="mainMenu-list--item-link"
+                           title="Контакты">Контакты</a>
+                    </li><li class="mainMenu-list--item">
+                        <a href="testy" class="mainMenu-list--item-link"
+                           title="Тесты">Тесты</a>
+                    </li><li class="mainMenu-list--item">
+                        <a href="besplatno" class="mainMenu-list--item-link"
+                           title="Бесплатные материалы">Бесплатные материалы</a>
+                    </li></ul>
+                </div>
+
+                <div class="footer-middle">
+
+                    <div class="footer-middle--el">
+                        <div class="logo-title logo-title_mod">
+
+                            <img class="logo logo_mod" src="assets/i/logo.svg"
+                                 alt="Логотип школы современных технологий" title="ntschool.loc">
+
+                            <div class="titlePage titlePage_mod">Школа современных технологий</div>
+                        </div>
+                    </div>
+
+                    <div class="footer-middle--el">
+
+                        <div class="social social_mod">
+
+                            <a href="https://www.facebook.com/ntschool" target="_blank" rel="nofollow noreferrer" class="social-item"
+                               title="fb">
+                                <svg class="social-item--ico" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 22 22" fill="#fff">
+
+                                    <use xlink:href='./assets/i/facebook.svg#ico'></use>
+                                </svg>
+                            </a>
+
+                            <a href="http://vk.com/ntschoolru" target="_blank" rel="nofollow noreferrer" class="social-item" title="vk">
+                                <svg class="social-item--ico" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 22 22" fill="#fff">
+
+                                    <use xlink:href='./assets/i/vk.svg#ico'></use>
+                                </svg>
+                            </a>
+
+                            <a href="https://twitter.com/ntschool_ru" target="_blank" rel="nofollow noreferrer" class="social-item"
+                               title="tw">
+                                <svg class="social-item--ico" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 22 22" fill="#fff">
+
+                                    <use xlink:href='./assets/i/twitter.svg#ico'></use>
+                                </svg>
+                            </a>
+
+                        </div>
+
+                        <div class="callback callback_mod md-trigger" title="Заказать обратный звонок"
+                             data-modal="modal-1">
+                            <div class="callback-phone callback-phone_mod">8 800 500 20 63</div>
+                            <button class="callback-btn callback-btn_mod">Обратный звонок</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <div class="copyright">
+                        &copy;Школа современных технологий, 2011-2018.
+                        <div>
+                            <a class="copyright-link" href="agreement.pdf" target="_blank"
+                               title="Пользовательское соглашение">Пользовательское
+                                соглашение</a> |
+                            <a href="confidential.pdf" class="copyright-link">Политика конфиденциальности</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
+</div>
+<div class="mobMenu">
+
+    <ul class="mainMenu-list2">
+
+    </ul>
+
+</div>
+<div class="scroll-to-top"><i class="fa-angle-up"></i></div>
+<div class="md-modal md-effect-17" id="modal-1">
+    <div class="md-content">
+        <div class="md-content--wrapper">
+            <span class="md-content--wrapper-title">Укажите имя и телефон для связи с Вами.</span>
+            <form method="post" class="callback-form ajax_form" id="callback">
+    <label for="name2" class="callback-form--input">
+        <input type="text" id="name2" name="name" placeholder="Имя" required></label>
+    <label for="phone2" class="callback-form--input">
+        <input type="tel" id="phone2" name="phone" placeholder="Телефон" required></label>
+    <input type="email" class="inputdn" name="workemail">
+    <input type="submit" name="callback_submit" class="btn" value="Заказать">
+
+	<input type="hidden" name="af_action" value="61d8b1d5ff282e9d191dcf304c29ce74" />
+</form>
+<br>
+<span class="loginINOUT--soc-description"><sup>*</sup>В ближайшее время с Вами свяжется наж менеджер и ответит на интересующие Вас вопросы</span>
+<span class="access-policy"><sup>*</sup>Нажимая кнопку "Заказать", Вы подтверждаете, что ознакомлены и согласны с условиями <a
+            href="assets/files/agreement.pdf" target="_blank">пользовательского соглашения</a></span>            <button class="md-close"></button>
+        </div>
+    </div>
+</div>
+<div class="md-overlay"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+      window.jQuery || document.write('<script defer src="assets/lib/jquery.min.js"><\/script>')
+    </script>
+    <script defer src="assets/lib/svg4everybody.min.js"></script>
+    <script defer src="assets/lib/owl-carousel/owl.carousel.min.js"></script>
+    <script defer src="assets/lib/modalEffects/modalEffects_mod.js"></script>
+    <script defer src="assets/lib/jquery.maskedinput.min.js"></script>
+    <script defer src="assets/js/common.js"></script>
+    
+    <script type="text/javascript"> (function (d, w, c) {
+        (w[c] = w[c] || []).push(function () {
+          try {
+            w.yaCounter25530863 = new Ya.Metrika({
+              id: 25530863,
+              clickmap: true,
+              trackLinks: true,
+              accurateTrackBounce: true,
+              webvisor: true
+            })
+          } catch (e) {
+          }
+        })
+        var n = d.getElementsByTagName('script')[0], s = d.createElement('script'), f = function () {
+          n.parentNode.insertBefore(s, n)
+        }
+        s.type = 'text/javascript'
+        s.async = true
+        s.src = 'https://mc.yandex.ru/metrika/watch.js'
+        if (w.opera == '[object Opera]') {
+          d.addEventListener('DOMContentLoaded', f, false)
+        } else {
+          f()
+        }
+      })(document, window, 'yandex_metrika_callbacks') </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/25530863" style="position:absolute; left:-9999px;" alt=""/></div>
+    </noscript>
+
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date()
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]
+        a.async = 1
+        a.src = g
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga')
+      ga('create', 'UA-60019128-1', 'auto')
+      ga('require', 'linkid', 'linkid.js')
+      ga('send', 'pageview')
+    </script>
+
+
+    <script>
+      !function (f, b, e, v, n, t, s) {
+        if (f.fbq) return
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        }
+        if (!f._fbq) f._fbq = n
+        n.push = n
+        n.loaded = !0
+        n.version = '2.0'
+        n.queue = []
+        t = b.createElement(e)
+        t.async = !0
+        t.src = v
+        s = b.getElementsByTagName(e)[0]
+        s.parentNode.insertBefore(t, s)
+      }(window,
+        document, 'script', 'https://connect.facebook.net/en_US/fbevents.js')
+      fbq('init', '478597098997449') // Insert your pixel ID here.
+      fbq('track', 'PageView')
+    </script>
+    <noscript><img height="1" width="1" style="display:none" alt=""
+                   src="https://www.facebook.com/tr?id=478597098997449&ev=PageView&noscript=1"/></noscript>
+
+
+<script type="text/javascript" src="/assets/components/minishop2/js/web/nt.js?v=5784beb5e7"></script>
+<script type="text/javascript" src="/assets/components/ajaxform/js/default.js"></script>
+<script type="text/javascript">AjaxForm.initialize({"assetsUrl":"\/assets\/components\/ajaxform\/","actionUrl":"\/assets\/components\/ajaxform\/action.php","closeMessage":"\u0437\u0430\u043a\u0440\u044b\u0442\u044c \u0432\u0441\u0435","formSelector":"form.ajax_form","pageId":27});</script>
+</body>
+</html>
